@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Бронювання туру</title>
+</head>
+<body>
+    <h1>Бронювання туру</h1>
+    <form method="POST" action="/booking">
+        <label>Ваше ім'я:</label>
+        <input type="text" name="name" required><br>
+        <label>Ваш email:</label>
+        <input type="email" name="email" required><br>
+        <label>Оберіть тур:</label>
+        <select name="tour" required>
+            {% for tour in tours %}
+            <option value="{{ tour.name }}">{{ tour.name }} - {{ tour.price }}$</option>
+            {% endfor %}
+        </select><br>
+        <button type="submit">Забронювати</button>
+    </form>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+</body>
+</html>
