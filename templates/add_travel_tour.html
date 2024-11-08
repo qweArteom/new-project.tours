@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Додати подорожній тур</title>
+</head>
+<body>
+    <h1>Додати подорожній тур</h1>
+    <form method="POST" action="/add_travel_tour">
+        <label>Назва туру:</label>
+        <input type="text" name="tour_name" required><br>
+        
+        <label>Напрямок (країна або місто):</label>
+        <input type="text" name="destination" required><br>
+        
+        <label>Опис туру:</label>
+        <textarea name="description" required></textarea><br>
+        
+        <label>Тривалість (в днях):</label>
+        <input type="number" name="duration" required><br>
+        
+        <label>Ціна:</label>
+        <input type="number" name="price" required><br>
+        
+        <button type="submit">Додати подорожній тур</button>
+    </form>
+    
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+</body>
+</html>
