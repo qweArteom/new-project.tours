@@ -9,12 +9,16 @@
     <form method="POST" action="/add_tour">
         <label>Назва туру:</label>
         <input type="text" name="tour_name" required><br>
+
         <label>Опис туру:</label>
         <textarea name="description" required></textarea><br>
+
         <label>Ціна:</label>
         <input type="number" name="price" required><br>
+
         <button type="submit">Додати тур</button>
     </form>
+    
     {% with messages = get_flashed_messages() %}
         {% if messages %}
             <ul>
@@ -24,5 +28,8 @@
             </ul>
         {% endif %}
     {% endwith %}
+    
+    <hr>
+    <a href="{{ url_for('index') }}">Повернутися до навігатора сайту</a>
 </body>
 </html>

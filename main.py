@@ -8,6 +8,11 @@ tours = []
 travel_tours = []
 
 
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+
 @app.route('/booking', methods=['GET', 'POST'])
 def booking():
     if request.method == 'POST':
@@ -49,6 +54,18 @@ def add_travel_tour():
         flash(f'Подорожній тур "{tour_name}" успішно доданий!')
         return redirect(url_for('add_travel_tour'))
     return render_template('add_travel_tour.html')
+
+
+@app.route('/tours', methods=['GET', 'POST'])
+def tours_page():
+    if request.method == 'POST':
+        name = request.form['name']
+        email = request.form['email']
+        tour_name = request.form['tour']
+        flash(f'Дякуємо за бронювання, {name}! Ви забронювали тур "{tour_name}".')
+        return redirect(url_for('tours_page'))
+    return render_template('tours.html', tours=tours + travel_tours)
+
 
 if __name__ == '__main__':
     app.run(debug=True)

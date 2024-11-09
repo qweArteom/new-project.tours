@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Навігатор сайту</title>
+</head>
+<body>
+    <h1>Ласкаво просимо на сайт бронювання турів</h1>
+    <p>Оберіть одну з опцій нижче:</p>
+    <ul>
+        <li><a href="{{ url_for('tours_page') }}">Переглянути тури</a></li>
+        <li><a href="{{ url_for('add_tour') }}">Додати новий тур</a></li>
+        <li><a href="{{ url_for('add_travel_tour') }}">Додати подорожній тур</a></li>
+    </ul>
+</body>
+</html>
+<hr>
